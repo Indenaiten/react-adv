@@ -1,13 +1,11 @@
 import styles from '../styles/styles.module.css';
 import noImage from '../assets/no-image.jpg';
-import { useState } from 'react';
+import { use, useState } from 'react';
+import { useProductCounter } from '../hooks/ProductCounterHook';
 
 export const ProductCard = () => {
 
-    const [ counter, setCounter ] = useState(0);
-    
-    const increment = ( value: number ) => setCounter( prev => Math.max( 0, prev + value ));
-    const decrement = ( value: number ) => setCounter( prev => Math.max( 0, prev - value ));
+    const { counter, increment, decrement } = useProductCounter({});
 
     return (
         <div className={ styles.productCard }>
