@@ -24,8 +24,8 @@ export const Navigation = () => {
                 <Routes>
                     {/* Crear dinámicamente las rutas */}
                     {
-                        routes.map( ({ to, path, Component }) => (
-                            <Route  key={ to } path={ path } element={ <Component /> }/>
+                        routes.map( ({ to, path, component: Component }) => (
+                            <Route  key={ to } path={ path } element={ <Component/> }/>
                         ))
                     }
                     <Route path="/*" element={<Navigate to={routes[0].to} replace/>}/>
