@@ -23,11 +23,11 @@ export const ShoppingPage = () => {
                 { 
                     products.map( product => ( 
                         <ProductCard key={product.id} product={product}>
-                            <ProductImage />
+                            <ProductCard.Image />
 
-                            <ProductTitle />
+                            <ProductCard.Title />
 
-                            <ProductButtons />
+                            <ProductCard.Buttons />
                         </ProductCard>
                     ))
                 }
