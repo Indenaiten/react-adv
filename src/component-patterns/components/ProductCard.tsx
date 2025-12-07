@@ -8,16 +8,17 @@ const { Provider } = context;
 
 export type props = {
     product: Product;
+    className?: string;
     children?: React.ReactElement | React.ReactElement[];
 }
 
-export const ProductCard = ({ product, children = [] }: props ) => {
+export const ProductCard = ({ product, className, children = [] }: props ) => {
 
     const { counter, increment, decrement } = useProductCounter({});
 
     return (
         <Provider value={{ product, counter, increment, decrement }}>
-            <div className={ styles.productCard }>
+            <div className={ `${styles.productCard} ${className}` } >
                 { children }
             </div>
         </Provider>
