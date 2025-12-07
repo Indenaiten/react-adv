@@ -4,6 +4,8 @@ import { ProductCardTitle } from './ProductCardTitle';
 import { ProductCardButtons } from './ProductCardButtons';
 import { JSX } from 'react';
 
+export { ProductCardImage, ProductCardTitle, ProductCardButtons };
+
 export type props = {
     ({ product, children }: ProductCardProps): JSX.Element,
     Image: typeof ProductCardImage,
