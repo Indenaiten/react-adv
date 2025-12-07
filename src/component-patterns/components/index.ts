@@ -7,7 +7,7 @@ import { JSX } from 'react';
 export { ProductCardImage, ProductCardTitle, ProductCardButtons };
 
 export type props = {
-    ({ product, children }: ProductCardProps): JSX.Element,
+    ({}: ProductCardProps): JSX.Element,
     Image: typeof ProductCardImage,
     Title: typeof ProductCardTitle,
     Buttons: typeof ProductCardButtons,
