@@ -1,5 +1,5 @@
 import { P } from "react-router/dist/development/instrumentation-BB0wRuqz"
-import { ProductButtons, ProductCard, ProductImage, ProductTitle } from "../components/ProductCard"
+import { ProductCard, ProductCardImage, ProductCardTitle, ProductCardButtons } from "../components"
 import { Product } from "../model"
 
 const products: Product[] = [
@@ -23,9 +23,9 @@ export const ShoppingPage = () => {
                 { 
                     products.map( product => ( 
                         <ProductCard key={product.id} product={product}>
-                            <ProductCard.Image />
-                            <ProductCard.Title />
-                            <ProductCard.Buttons />
+                            <ProductCardImage />
+                            <ProductCardTitle />
+                            <ProductCardButtons />
                         </ProductCard>
                     ))
                 }
