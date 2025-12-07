@@ -24,9 +24,7 @@ export const ShoppingPage = () => {
                     products.map( product => ( 
                         <ProductCard key={product.id} product={product}>
                             <ProductCard.Image />
-
                             <ProductCard.Title />
-
                             <ProductCard.Buttons />
                         </ProductCard>
                     ))
