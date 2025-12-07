@@ -9,16 +9,17 @@ const { Provider } = context;
 export type props = {
     product: Product;
     className?: string;
+    style?: React.CSSProperties;
     children?: React.ReactElement | React.ReactElement[];
 }
 
-export const ProductCard = ({ product, className, children = [] }: props ) => {
+export const ProductCard = ({ product, className, style, children = [] }: props ) => {
 
     const { counter, increment, decrement } = useProductCounter({});
 
     return (
         <Provider value={{ product, counter, increment, decrement }}>
-            <div className={ `${styles.productCard} ${className}` } >
+            <div className={ `${styles.productCard} ${className}` } style={style}>
                 { children }
             </div>
         </Provider>

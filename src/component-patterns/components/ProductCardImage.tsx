@@ -6,15 +6,16 @@ import noImage from '../assets/no-image.jpg';
 export type props = {
     img?: string;
     className?: string;
+    style?: React.CSSProperties;
 }
 
-export const ProductCardImage = ({ img = '', className }: props) => {
+export const ProductCardImage = ({ img = '', className, style }: props) => {
     const { product } = useContext( productContext );
     const image: string = !img ? product.img || '' : img;
 
     return (
         <>
-            <img className={`${styles.productImg} ${className}`} src={ image ? image : noImage } alt={ image ? 'Product image' : 'Image not found' }/>
+            <img className={`${styles.productImg} ${className}`} style={style} src={ image ? image : noImage } alt={ image ? 'Product image' : 'Image not found' }/>
         </>
     )
 }

@@ -4,14 +4,15 @@ import styles from '../styles/styles.module.css';
 
 export type props = {
     className?: string;
+    style?: React.CSSProperties;
 }
 
-export const ProductCardButtons = ({ className }: props) => {
+export const ProductCardButtons = ({ className, style }: props) => {
     const { counter, increment, decrement } = useContext( productContext );
 
     return (
         <>
-            <div className={`${styles.buttonsContainer} ${className}`}>
+            <div className={`${styles.buttonsContainer} ${className}`} style={style}>
                 <button className={styles.buttonMinus} onClick={() => decrement( 1 )}>-</button>
 
                 <div className={styles.countLabel}>{counter}</div>

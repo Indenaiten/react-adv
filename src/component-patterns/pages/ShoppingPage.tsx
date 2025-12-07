@@ -21,10 +21,10 @@ export const ShoppingPage = () => {
             <hr />
             
             <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
-                <ProductCard product={products[0]} >
-                    <ProductCard.Image />
-                    <ProductCard.Title />
-                    <ProductCard.Buttons />
+                <ProductCard product={products[0]} style={{ backgroundColor: '#70D1F8' }}>
+                    <ProductCard.Image style={{ boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)' }}/>
+                    <ProductCard.Title style={{ fontWeight: 'bold' }}/>
+                    <ProductCard.Buttons style={{display: 'flex', justifyContent: 'end'}} />
                 </ProductCard>
 
                 <ProductCard product={products[0]} className="bg-dark">
