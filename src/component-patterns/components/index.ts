@@ -1,4 +1,20 @@
-export { ProductCard } from './ProductCard';
-export { ProductCardImage } from './ProductCardImage';
-export { ProductCardTitle } from './ProductCardTitle';
-export { ProductCardButtons } from './ProductCardButtons';
+import { ProductCard as ProductCardHOC, props as ProductCardProps } from './ProductCard';
+import { ProductCardImage } from './ProductCardImage';
+import { ProductCardTitle } from './ProductCardTitle';
+import { ProductCardButtons } from './ProductCardButtons';
+import { JSX } from 'react';
+
+export type props = {
+    ({ product, children }: ProductCardProps): JSX.Element,
+    Image: typeof ProductCardImage,
+    Title: typeof ProductCardTitle,
+    Buttons: typeof ProductCardButtons,
+}
+
+export const ProductCard: props = Object.assign( ProductCardHOC, {
+    Image: ProductCardImage,
+    Title: ProductCardTitle,
+    Buttons: ProductCardButtons,
+});
+
+export default ProductCard;

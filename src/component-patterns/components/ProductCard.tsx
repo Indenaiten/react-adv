@@ -6,7 +6,7 @@ import { Context, createContext } from 'react';
 export const context: Context<ProductContext> = createContext<ProductContext>({} as ProductContext);
 const { Provider } = context;
 
-type props = {
+export type props = {
     product: Product;
     children?: React.ReactElement | React.ReactElement[];
 }
