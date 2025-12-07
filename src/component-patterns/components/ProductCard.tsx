@@ -9,15 +9,38 @@ type props = {
 
 export const ProductCard = ({ product }: props ) => {
 
+    return (
+        <div className={ styles.productCard }>
+            <ProductImage img={ product.img } />
+
+            <ProductTitle title={ product.title } />
+
+            <ProductButtons />
+        </div>
+    )
+}
+
+export const ProductImage = ({ img = '' }) => {
+    return (
+        <>
+            <img className={styles.productImg} src={ img ? img : noImage } alt={ img ? 'Product image' : 'Image not found' }/>
+        </>
+    )
+}
+
+export const ProductTitle = ({ title }: { title: string }) => {
+    return (
+        <>
+            <span className={styles.productDescription}>{ title }</span>
+        </>
+    )
+}
+
+export const ProductButtons = () => {
     const { counter, increment, decrement } = useProductCounter({});
 
     return (
-        <div className={ styles.productCard }>
-            <img className={styles.productImg} src={ product.img ? product.img : noImage } alt={ product.img ? product.title : 'Image not found' }/>
-            {/*<img className={styles.productImg} src={noImage} alt="Image not found"/>*/}
-
-            <span className={styles.productDescription}>{ product.title }</span>
-
+        <>
             <div className={styles.buttonsContainer}>
                 <button className={styles.buttonMinus} onClick={() => decrement( 1 )}>-</button>
 
@@ -25,6 +48,7 @@ export const ProductCard = ({ product }: props ) => {
 
                 <button className={styles.buttonAdd} onClick={() => increment( 1 )}>+</button>
             </div>
-        </div>
+        </>
     )
 }
+
