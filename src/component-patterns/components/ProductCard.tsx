@@ -5,17 +5,21 @@ import noImage from '../assets/no-image.jpg';
 
 type props = {
     product: Product;
+    children?: React.ReactElement[];
 }
 
-export const ProductCard = ({ product }: props ) => {
+export const ProductCard = ({ product, children = [] }: props ) => {
 
     return (
         <div className={ styles.productCard }>
+            { children }
+            {/*
             <ProductImage img={ product.img } />
 
             <ProductTitle title={ product.title } />
 
             <ProductButtons />
+            */}
         </div>
     )
 }
@@ -28,7 +32,7 @@ export const ProductImage = ({ img = '' }) => {
     )
 }
 
-export const ProductTitle = ({ title }: { title: string }) => {
+export const ProductTitle = ({ title = 'Test Title' }: { title?: string }) => {
     return (
         <>
             <span className={styles.productDescription}>{ title }</span>

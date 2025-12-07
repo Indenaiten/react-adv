@@ -1,5 +1,5 @@
 import { P } from "react-router/dist/development/instrumentation-BB0wRuqz"
-import { ProductCard } from "../components/ProductCard"
+import { ProductButtons, ProductCard, ProductImage, ProductTitle } from "../components/ProductCard"
 import { Product } from "../model"
 
 const products: Product[] = [
@@ -20,7 +20,17 @@ export const ShoppingPage = () => {
             <hr />
             
             <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
-                { products.map( product => ( <ProductCard key={product.id} product={product} /> )) }
+                { 
+                    products.map( product => ( 
+                        <ProductCard key={product.id} product={product}>
+                            <ProductImage />
+
+                            <ProductTitle />
+
+                            <ProductButtons />
+                        </ProductCard>
+                    ))
+                }
             </div>
         </div>
     )
