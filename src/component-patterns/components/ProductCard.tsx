@@ -9,6 +9,7 @@ const { Provider } = context;
 
 export type props = {
     product: Product;
+    count?: number;
     className?: string;
     style?: React.CSSProperties;
     onChange?: ( args: onChangeArgs ) => void;
@@ -20,9 +21,9 @@ export type onChangeArgs = {
     count: number;
 }
 
-export const ProductCard = ({ product, className, style, onChange, children = [] }: props ) => {
+export const ProductCard = ({ product, count = 0, className, style, onChange, children = [] }: props ) => {
 
-    const { counter, increment, decrement } = useProductCounter({ product, onChange });
+    const { counter, increment, decrement } = useProductCounter({ product, onChange, initialValue: count });
 
     return (
         <Provider value={{ product, counter, increment, decrement }}>

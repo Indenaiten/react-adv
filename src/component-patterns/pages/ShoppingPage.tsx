@@ -25,6 +25,8 @@ export const ShoppingPage = () => {
         console.log( JSON.stringify( newShoppingCart ));
     }
 
+    const getProductCount = ( product: Product ) => shoppingCart[ product.id ]?.count || 0;
+
     return (
         <div>
             <h1>Shopping Page</h1>
@@ -33,7 +35,7 @@ export const ShoppingPage = () => {
             <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
                 {
                     products.map( product => (
-                        <ProductCard key={ product.id } product={ product } onChange={ onProductCountChange }>
+                        <ProductCard key={ product.id } product={ product } count={ getProductCount( product )} onChange={ onProductCountChange }>
                             <ProductCardImage />
                             <ProductCardTitle />
                             <ProductCardButtons />
@@ -43,15 +45,15 @@ export const ShoppingPage = () => {
             </div>
 
             <div className="shoping-cart">
-                <ProductCard product={ products[0] } style={{ width: '175px' }}>
+                <ProductCard product={ products[0] } count={ getProductCount( products[0] )} onChange={ onProductCountChange } style={{ width: '175px' }}>
                     <ProductCardImage />
                     <ProductCardTitle />
-                    <ProductCardButtons />
+                    <ProductCardButtons style={{ display: 'flex', justifyContent: 'center' }}/>
                 </ProductCard>
 
-                <ProductCard product={ products[1] } style={{ width: '175px' }}>
+                <ProductCard product={ products[1] } count={ getProductCount( products[1] )} onChange={ onProductCountChange } style={{ width: '175px' }}>
                     <ProductCardImage />
-                    <ProductCardButtons />
+                    <ProductCardButtons style={{ display: 'flex', justifyContent: 'center' }}/>
                 </ProductCard>
             </div>
 

@@ -8,7 +8,7 @@ type args = {
     onChange?: ( args: onChangeArgs ) => void,
 }
 
-export const useProductCounter = ({ product, initialValue = 0, onChange }: args ) => {
+export const useProductCounter = ({ product, onChange, initialValue = 0 }: args ) => {
     const [ counter, setCounter ] = useState( initialValue );
     
     const increment = ( value: number ) => { 
