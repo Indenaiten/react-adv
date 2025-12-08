@@ -2,13 +2,23 @@ import { P } from "react-router/dist/development/instrumentation-BB0wRuqz"
 import { ProductCard, ProductCardButtons, ProductCardImage, ProductCardTitle } from "../components"
 import { Product } from "../model"
 import '../styles/custom-styles.css';
+import { useState } from "react";
 
 const products: Product[] = [
     { id: '1', title: 'Coffee Mug - Card', img: './coffee-mug.png' },
     { id: '2', title: 'Coffe Mug - Meme', img: './coffee-mug2.png' },
 ]
 
+interface ProductCart extends Product{
+    count: number;
+}
 export const ShoppingPage = () => {
+    
+    const [shoppingCart, setShoppingCart] = useState<{ [ key: string ]: ProductCart }>({
+        '1': { ...products[0], count: 2 },
+        '2': { ...products[1], count: 1 },
+    });
+
     return (
         <div>
             <h1>Shopping Page</h1>
