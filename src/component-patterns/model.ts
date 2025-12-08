@@ -10,3 +10,7 @@ export interface ProductContext{
     increment: ( value: number ) => void;
     decrement: ( value: number ) => void;
 }
+
+export interface ProductCart extends Product{
+    count: number;
+}

@@ -1,38 +1,16 @@
-import { P } from "react-router/dist/development/instrumentation-BB0wRuqz"
 import { ProductCard, ProductCardButtons, ProductCardImage, ProductCardTitle } from "../components"
 import { Product } from "../model"
 import '../styles/custom-styles.css';
-import { useState } from "react";
-import { onChangeArgs } from "../components/ProductCard";
+import { useShoppingCart } from "../hooks/ShoppingCartHook";
 
 const products: Product[] = [
     { id: '1', title: 'Coffee Mug - Card', img: './coffee-mug.png' },
     { id: '2', title: 'Coffe Mug - Meme', img: './coffee-mug2.png' },
 ]
 
-interface ProductCart extends Product{
-    count: number;
-}
-
 export const ShoppingPage = () => {
     
-    const [shoppingCart, setShoppingCart] = useState<{ [ key: string ]: ProductCart }>({});
-
-    const onProductCountChange = ({ product, count }: onChangeArgs ) => {
-        setShoppingCart( prev => {
-            const productInCart: ProductCart = shoppingCart[ product.id ] || { ...product, count: 0 };
-
-            if( Math.max( productInCart.count + count, 0 ) > 0 ){
-                productInCart.count += count;
-                return { ...shoppingCart, [ product.id ]: productInCart}
-            }
-
-            const { [ product.id ]: toRemove, ...rest } = shoppingCart;
-            return rest;
-        });
-    }
-
-    const getProductCount = ( product: Product ) => shoppingCart[ product.id ]?.count || 0;
+    const { shoppingCart, onProductCountChange, getProductCount } = useShoppingCart();
 
     return (
         <div>
