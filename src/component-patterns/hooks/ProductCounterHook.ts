@@ -1,15 +1,27 @@
 import { useState } from "react";
+import { onChangeArgs } from "../components/ProductCard";
+import { Product } from "../model";
 
 type args = {
+    product: Product
     initialValue?: number,
-    onChange?: () => void,
+    onChange?: ( args: onChangeArgs ) => void,
 }
 
-export const useProductCounter = ({ initialValue = 0, onChange }: args ) => {
+export const useProductCounter = ({ product, initialValue = 0, onChange }: args ) => {
     const [ counter, setCounter ] = useState( initialValue );
     
-    const increment = ( value: number ) => { setCounter( prev => Math.max( 0, prev + value )); onChange && onChange(); };
-    const decrement = ( value: number ) => { setCounter( prev => Math.max( 0, prev - value )); onChange && onChange(); };
+    const increment = ( value: number ) => { 
+        const newValue = Math.max( 0, counter + value );
+        setCounter( newValue ); 
+        onChange && onChange({ product, count: newValue }); 
+    };
+    
+    const decrement = ( value: number ) => { 
+        const newValue = Math.max( 0, counter - value );
+        setCounter( newValue ); 
+        onChange && onChange({ product, count: newValue }); 
+    };
 
     return { counter, increment, decrement };
 }

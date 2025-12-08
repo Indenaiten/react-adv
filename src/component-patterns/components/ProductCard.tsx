@@ -11,13 +11,18 @@ export type props = {
     product: Product;
     className?: string;
     style?: React.CSSProperties;
-    onChange?: () => void;
+    onChange?: ( args: onChangeArgs ) => void;
     children?: React.ReactElement | React.ReactElement[];
+}
+
+export type onChangeArgs = {
+    product: Product;
+    count: number;
 }
 
 export const ProductCard = ({ product, className, style, onChange, children = [] }: props ) => {
 
-    const { counter, increment, decrement } = useProductCounter({ onChange });
+    const { counter, increment, decrement } = useProductCounter({ product, onChange });
 
     return (
         <Provider value={{ product, counter, increment, decrement }}>
