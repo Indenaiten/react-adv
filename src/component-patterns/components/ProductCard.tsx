@@ -2,18 +2,24 @@ import styles from '../styles/styles.module.css';
 import { useProductCounter } from '../hooks/ProductCounterHook';
 import { Product, ProductContext } from '../model';
 import { Context, createContext } from 'react';
-import { on } from 'events';
 
 export const context: Context<ProductContext> = createContext<ProductContext>({} as ProductContext);
 const { Provider } = context;
 
 export type props = {
     product: Product;
-    count?: number;
+    initialValues?: InitialValues;
+    value?: number;
     className?: string;
     style?: React.CSSProperties;
     onChange?: ( args: onChangeArgs ) => void;
     children?: React.ReactElement | React.ReactElement[];
+}
+
+export type InitialValues = {
+    count?: number;
+    minCount?: number;
+    maxCount?: number;
 }
 
 export type onChangeArgs = {
@@ -21,9 +27,9 @@ export type onChangeArgs = {
     count: number;
 }
 
-export const ProductCard = ({ product, count = 0, className, style, onChange, children = [] }: props ) => {
 
-    const { counter, increment, decrement } = useProductCounter({ product, onChange, value: count });
+export const ProductCard = ({ product, initialValues = { count: 0, minCount: 0 }, value = 0, className, style, onChange, children = [] }: props ) => {
+    const { counter, increment, decrement } = useProductCounter({ product, onChange, initialValues, value });
 
     return (
         <Provider value={{ product, counter, increment, decrement }}>

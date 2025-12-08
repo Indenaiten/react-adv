@@ -16,7 +16,7 @@ export const ShoppingPage = () => {
             <h1>Shopping Page</h1>
             <hr />
 
-            <ProductCard product={ product }>
+            <ProductCard product={ product } initialValues={{ count: 4, minCount: 3, maxCount: 10 }}>
                 <ProductCardImage />
                 <ProductCardTitle style={{ display: 'flex', justifyContent: 'center' }}/>
                 <ProductCardButtons style={{ display: 'flex', justifyContent: 'center' }}/>
