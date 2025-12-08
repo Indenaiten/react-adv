@@ -23,7 +23,7 @@ export type onChangeArgs = {
 
 export const ProductCard = ({ product, count = 0, className, style, onChange, children = [] }: props ) => {
 
-    const { counter, increment, decrement } = useProductCounter({ product, onChange, initialValue: count });
+    const { counter, increment, decrement } = useProductCounter({ product, onChange, value: count });
 
     return (
         <Provider value={{ product, counter, increment, decrement }}>

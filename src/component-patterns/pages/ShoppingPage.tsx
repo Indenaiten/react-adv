@@ -22,7 +22,6 @@ export const ShoppingPage = () => {
         const newShoppingCart = { ...shoppingCart, [ product.id ]: { ...product, count }};
         if( count === 0 ) delete newShoppingCart[ product.id ];
         setShoppingCart({ ...newShoppingCart });
-        console.log( JSON.stringify( newShoppingCart ));
     }
 
     const getProductCount = ( product: Product ) => shoppingCart[ product.id ]?.count || 0;
@@ -37,30 +36,23 @@ export const ShoppingPage = () => {
                     products.map( product => (
                         <ProductCard key={ product.id } product={ product } count={ getProductCount( product )} onChange={ onProductCountChange }>
                             <ProductCardImage />
-                            <ProductCardTitle />
-                            <ProductCardButtons />
+                            <ProductCardTitle style={{ display: 'flex', justifyContent: 'center' }}/>
+                            <ProductCardButtons style={{ display: 'flex', justifyContent: 'center' }}/>
                         </ProductCard>
                     ))
                 }
             </div>
 
             <div className="shoping-cart">
-                <ProductCard product={ products[0] } count={ getProductCount( products[0] )} onChange={ onProductCountChange } style={{ width: '175px' }}>
-                    <ProductCardImage />
-                    <ProductCardTitle />
-                    <ProductCardButtons style={{ display: 'flex', justifyContent: 'center' }}/>
-                </ProductCard>
-
-                <ProductCard product={ products[1] } count={ getProductCount( products[1] )} onChange={ onProductCountChange } style={{ width: '175px' }}>
-                    <ProductCardImage />
-                    <ProductCardButtons style={{ display: 'flex', justifyContent: 'center' }}/>
-                </ProductCard>
-            </div>
-
-            <div>
-                <code>
-                    { JSON.stringify( shoppingCart ) }
-                </code>
+                {
+                    Object.entries( shoppingCart ).map( ( [ key, product ] ) => (
+                        <ProductCard key={key} product={ product } count={ product.count } onChange={ onProductCountChange } style={{ width: '175px' }}>
+                            <ProductCardImage />
+                            <ProductCardTitle/>
+                            <ProductCardButtons style={{ display: 'flex', justifyContent: 'center' }}/>
+                        </ProductCard>
+                    ))
+                }
             </div>
         </div>
     )
