@@ -12,12 +12,17 @@ const products: Product[] = [
 interface ProductCart extends Product{
     count: number;
 }
+
 export const ShoppingPage = () => {
     
     const [shoppingCart, setShoppingCart] = useState<{ [ key: string ]: ProductCart }>({
         '1': { ...products[0], count: 2 },
         '2': { ...products[1], count: 1 },
     });
+
+    const onProductCountChange = () => {
+        console.log('Product count changed');
+    }
 
     return (
         <div>
@@ -27,7 +32,7 @@ export const ShoppingPage = () => {
             <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
                 {
                     products.map( product => (
-                        <ProductCard key={ product.id } product={ product } >
+                        <ProductCard key={ product.id } product={ product } onChange={ onProductCountChange }>
                             <ProductCardImage />
                             <ProductCardTitle />
                             <ProductCardButtons />
@@ -37,13 +42,13 @@ export const ShoppingPage = () => {
             </div>
 
             <div className="shoping-cart">
-                <ProductCard product={ products[0] } style={{ width: '175px' }}>
+                <ProductCard product={ products[0] } onChange={ onProductCountChange } style={{ width: '175px' }}>
                     <ProductCardImage />
                     <ProductCardTitle />
                     <ProductCardButtons />
                 </ProductCard>
 
-                <ProductCard product={ products[1] } style={{ width: '175px' }}>
+                <ProductCard product={ products[1] } onChange={ onProductCountChange } style={{ width: '175px' }}>
                     <ProductCardImage />
                     <ProductCardButtons />
                 </ProductCard>
