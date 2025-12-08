@@ -25,9 +25,11 @@ export const ShoppingPage = () => {
                             <ProductCardTitle style={{ display: 'flex', justifyContent: 'center' }}/>
                             <ProductCardButtons style={{ display: 'flex', justifyContent: 'center' }}/>
                             <button onClick={reset}>Reset</button>
-                            <button onClick={() => increment(2)}>+2</button>
-                            <span>{count}</span>
                             <button onClick={() => decrement(2)}>-2</button>
+                            <span>{count}</span>
+                            {
+                                !isMaxCountReached && (<button onClick={() => increment(2)}>+2</button>)
+                            }                            
                         </>
                     )
                 }
