@@ -1,3 +1,4 @@
+import { JSX } from "react";
 import { ProductCard, ProductCardButtons, ProductCardImage, ProductCardTitle } from "../components"
 import { Product } from "../model"
 import '../styles/custom-styles.css';
@@ -17,9 +18,16 @@ export const ShoppingPage = () => {
             <hr />
 
             <ProductCard product={ product } initialValues={{ count: 4, minCount: 3, maxCount: 10 }}>
-                <ProductCardImage />
-                <ProductCardTitle style={{ display: 'flex', justifyContent: 'center' }}/>
-                <ProductCardButtons style={{ display: 'flex', justifyContent: 'center' }}/>
+                {
+                    ( message ): JSX.Element => (
+                        <>
+                            <ProductCardImage />
+                            <ProductCardTitle style={{ display: 'flex', justifyContent: 'center' }}/>
+                            <ProductCardButtons style={{ display: 'flex', justifyContent: 'center' }}/>
+                            <h1>{message}</h1>
+                        </>
+                    )
+                }
             </ProductCard>
         </div>
     )
