@@ -15,6 +15,7 @@ export const useProductCounter = ({ product, onChange, initialValues = { count: 
     const [ counter, setCounter ] = useState( initialValues.count || value );
     const isControlled: RefObject<boolean> = useRef( !!onChange );
     const isMounted: RefObject<boolean> = useRef( false );
+    const maxCount: RefObject<number> = useRef( initialValues.maxCount || Infinity );
 
     console.log(initialValues);
 
@@ -37,5 +38,5 @@ export const useProductCounter = ({ product, onChange, initialValues = { count: 
         onChange && onChange({ product, count: newValue }); 
     };
 
-    return { counter, increment, decrement };
+    return { counter, increment, decrement, maxCount: maxCount.current };
 }

@@ -9,6 +9,7 @@ export interface ProductContext{
     counter: number;
     increment: ( value: number ) => void;
     decrement: ( value: number ) => void;
+    maxCount: number;
 }
 
 export interface ProductCart extends Product{
