@@ -1,8 +1,6 @@
 import { RefObject, useEffect, useRef, useState } from "react";
 import { InitialValues, onChangeArgs } from "../components/ProductCard";
 import { Product } from "../model";
-import { on } from "events";
-import { n } from "react-router/dist/development/index-react-server-client-CCjKYJTH";
 
 type args = {
     product: Product
@@ -38,5 +36,7 @@ export const useProductCounter = ({ product, onChange, initialValues = { count: 
         onChange && onChange({ product, count: newValue }); 
     };
 
-    return { counter, increment, decrement, maxCount: maxCount.current };
+    const reset = () => setCounter( initialValues.count || 0 );
+
+    return { counter, increment, decrement, reset, isMaxCountReached: maxCount.current === counter, maxCount: maxCount.current };
 }

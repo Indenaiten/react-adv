@@ -1,6 +1,6 @@
 import { JSX } from "react";
 import { ProductCard, ProductCardButtons, ProductCardImage, ProductCardTitle } from "../components"
-import { Product } from "../model"
+import { Product, ProductCardHandlers } from "../model"
 import '../styles/custom-styles.css';
 
 const products: Product[] = [
@@ -17,14 +17,14 @@ export const ShoppingPage = () => {
             <h1>Shopping Page</h1>
             <hr />
 
-            <ProductCard product={ product } initialValues={{ count: 4, minCount: 3, maxCount: 10 }}>
+            <ProductCard product={ product } initialValues={{ count: 0, minCount: 0, maxCount: 3 }}>
                 {
-                    ( message ): JSX.Element => (
+                    ({ count, isMaxCountReached, maxCount, product, increment, decrement, reset }: ProductCardHandlers): JSX.Element => (
                         <>
                             <ProductCardImage />
                             <ProductCardTitle style={{ display: 'flex', justifyContent: 'center' }}/>
                             <ProductCardButtons style={{ display: 'flex', justifyContent: 'center' }}/>
-                            <h1>{message}</h1>
+                            <button onClick={reset}>Reset</button>
                         </>
                     )
                 }
