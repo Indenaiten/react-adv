@@ -25,6 +25,19 @@ export const ShoppingPage = () => {
                     ))
                 }
             </div>
+
+            <div className="shoping-cart">
+                <ProductCard product={ products[0] } style={{ width: '175px' }}>
+                    <ProductCardImage />
+                    <ProductCardTitle />
+                    <ProductCardButtons />
+                </ProductCard>
+
+                <ProductCard product={ products[1] } style={{ width: '175px' }}>
+                    <ProductCardImage />
+                    <ProductCardButtons />
+                </ProductCard>
+            </div>
         </div>
     )
 }
