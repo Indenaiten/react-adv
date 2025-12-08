@@ -17,7 +17,7 @@ export const ShoppingPage = () => {
             <h1>Shopping Page</h1>
             <hr />
 
-            <ProductCard product={ product } initialValues={{ count: 0, minCount: 0, maxCount: 3 }}>
+            <ProductCard product={ product } initialValues={{ count: 4, minCount: 4, maxCount: 10 }}>
                 {
                     ({ count, isMaxCountReached, maxCount, product, increment, decrement, reset }: ProductCardHandlers): JSX.Element => (
                         <>
@@ -25,6 +25,9 @@ export const ShoppingPage = () => {
                             <ProductCardTitle style={{ display: 'flex', justifyContent: 'center' }}/>
                             <ProductCardButtons style={{ display: 'flex', justifyContent: 'center' }}/>
                             <button onClick={reset}>Reset</button>
+                            <button onClick={() => increment(2)}>+2</button>
+                            <span>{count}</span>
+                            <button onClick={() => decrement(2)}>-2</button>
                         </>
                     )
                 }
